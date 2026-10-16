@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Zainab ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #fecfef 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Floating Hearts Background Effect */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.5rem;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        /* Screen 1: Heart Entry Screen */
+        #heart-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .big-heart-btn {
+            font-size: 8rem;
+            color: #ff3366;
+            cursor: pointer;
+            animation: heartbeat 1.2s infinite ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(255, 51, 102, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .big-heart-btn:hover {
+            transform: scale(1.15);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .instruction-text {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-top: 25px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Screen 2: PIN Lock Screen */
+        #pin-screen {
+            display: none;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.3);
+            text-align: center;
+            max-width: 360px;
+            width: 90%;
+            z-index: 1000;
+            border: 2px solid #ff4d79;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 10px;
+            border: 2px solid #ff4d79;
+            border-radius: 12px;
+            margin: 20px 0;
+            outline: none;
+        }
+
+        .btn-unlock {
+            background: linear-gradient(135deg, #ff3366, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Screen 3: Main Celebration Page */
+        #main-celebration {
+            display: none;
+            width: 100%;
+            max-width: 750px;
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .title-romantic {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            text-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .love-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            border: 2px solid #ff758c;
+            min-height: 180px;
+        }
+
+        .wish-chunk {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2d3436;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease;
+            display: none;
+        }
+
+        .wish-chunk.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .couple-names {
+            font-size: 1.8rem;
+            color: #ff3366;
+            font-weight: 700;
+            margin-top: 15px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Interactive Cake Section */
+        .cake-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 15px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            border: 2px solid #ff758c;
+            user-select: none;
+        }
+
+        .status-instruction {
+            font-weight: 600;
+            color: #ff3366;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .cake-box {
+            position: relative;
+            width: 220px;
+            height: 160px;
+            margin: 20px 0;
+            touch-action: none;
+        }
+
+        .plate {
+            position: absolute;
+            bottom: 0;
+            left: -10px;
+            width: 240px;
+            height: 16px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .cake-layer-bottom {
+            position: absolute;
+            bottom: 16px;
+            left: 15px;
+            width: 190px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff4d79, #ff758c);
+            border-radius: 12px 12px 15px 15px;
+            box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1);
+        }
+
+        .cake-layer-top {
+            position: absolute;
+            bottom: 76px;
+            left: 35px;
+            width: 150px;
+            height: 45px;
+            background: linear-gradient(135deg, #ff8fa3, #ffb3c1);
+            border-radius: 10px 10px 12px 12px;
+            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.08);
+        }
+
+        .icing {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 14px;
+            background: #ffffff;
+            border-radius: 10px 10px 6px 6px;
+        }
+
+        /* Candles Alignment */
+        .candles-group {
+            position: absolute;
+            top: 9px;
+            left: 35px;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            z-index: 10;
+        }
+
+        .candle-wrapper {
+            position: relative;
+            width: 12px;
+            height: 32px;
+            background: repeating-linear-gradient(45deg, #ff3366, #ff3366 4px, #fff 4px, #fff 8px);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .flame {
+            position: absolute;
+            top: -16px;
+            left: -2px;
+            width: 16px;
+            height: 20px;
+            background: radial-gradient(ellipse at bottom, #fffa65, #ff9f1a, #ff3838);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 12px #ff9f1a;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        .flame.off {
+            display: none;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+        }
+
+        /* Swipe Knife Element */
+        .knife {
+            position: absolute;
+            top: -20px;
+            right: -60px;
+            font-size: 2.8rem;
+            cursor: grab;
+            transition: transform 0.2s ease-out;
+            z-index: 20;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .knife.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cake-cut-line {
+            position: absolute;
+            top: 20px;
+            left: 110px;
+            width: 4px;
+            height: 0;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            transition: height 0.4s ease;
+            z-index: 15;
+        }
+
+        /* Memories PIN Popup Modal */
+        #memories-pin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 340px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid #ff3366;
+        }
+
+        /* 15 Photos Grid Gallery */
+        #memories-section {
+            display: none;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .photos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media(max-width: 480px) {
+            .photos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .photo-card {
+            background: white;
+            padding: 6px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border: 2px solid #ff758c;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .photo-card p {
+            font-size: 0.75rem;
+            color: #ff3366;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .error-msg { color: #ff3366; font-size: 0.85rem; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Hearts -->
+    <div class="bg-hearts" id="bgHearts"></div>
+
+    <!-- Screen 1: Heart Entry Screen -->
+    <div id="heart-screen">
+        <h2 style="color: #ffffff; margin-bottom: 15px; font-family: 'Dancing Script', cursive; font-size: 3rem;">Welcome Hasan & Zainab ❤️</h2>
+        <div class="big-heart-btn" onclick="openPinScreen()">
+            <i class="fas fa-heart"></i>
+        </div>
+        <p class="instruction-text">Tap the Heart to Enter Surprise!</p>
+    </div>
+
+    <!-- Screen 2: PIN Screen -->
+    <div id="pin-screen">
+        <i class="fas fa-heart" style="font-size: 2.5rem; color: #ff3366; margin-bottom: 10px;"></i>
+        <h3 style="color: #2d3436;">Enter Secret PIN</h3>
+        <p style="color: #636e72; font-size: 0.85rem; margin-top: 5px;">Passcode is 3129</p>
+        
+        <input type="password" id="pinInput" class="pin-input" maxlength="4" placeholder="••••">
+        <p id="errorMsg" class="error-msg">Incorrect PIN! Try '3129' ❤️</p>
+        
+        <button class="btn-unlock" onclick="verifyPin()">Unlock Celebration</button>
+    </div>
+
+    <!-- Memories PIN Verification Modal (Appears after Cake Cutting) -->
+    <div id="memories-pin-modal">
+        <div class="modal-content">
+            <i class="fas fa-lock" style="font-size: 2.2rem; color: #ff3366; margin-bottom: 10px;"></i>
+            <h3 style="color: #2d3436;">Enter PIN for Memories</h3>
+            <p style="color: #636e72; font-size: 0.85rem; margin-top: 5px;">Enter passcode '3129' to unlock photos</p>
+            
+            <input type="password" id="memoriesPinInput" class="pin-input" maxlength="4" placeholder="••••">
+            <p id="memoriesErrorMsg" class="error-msg">Incorrect PIN! Try '3129' ❤️</p>
+            
+            <button class="btn-unlock" onclick="verifyMemoriesPin()">Unlock Memories</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: Main Celebration Page -->
+    <div id="main-celebration">
+        <h1 class="title-romantic">Happy Birthday Zainab! 🎉🎂</h1>
+        <p style="color: #ffffff; margin-bottom: 15px; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">The Queen of Hasan's Heart ✨</p>
+
+        <!-- Wish Container with Sequential Animated Display -->
+        <div class="love-card">
+            <div id="wishContainer">
+                <p class="wish-chunk active">🌸🎂 Happy Birthday, Nisa! ❤️✨<br>Today is a very special day because it’s the birthday of someone who holds a truly special place in my heart. 🥹💗</p>
+                <p class="wish-chunk">Nisa, my heartfelt prayer is that your life will always be filled with happiness... 🌷<br>That any tears in your eyes will only be tears of joy, and your beautiful smile never fades. 🫶🏻</p>
+                <p class="wish-chunk">May Allah remove every difficulty from your life and fill your destiny with endless happiness. Ameen. 🤲🏻❤️</p>
+                <p class="wish-chunk">Some people come into our lives who mean so much more to us than ordinary people. Nisa, you are one of those people. 🌹✨</p>
+                <p class="wish-chunk">Happy Birthday once again, Nisa! 🎂👑💖<br>Keep shining with that beautiful smile of yours, always. Stay blessed! ✨🌙</p>
+            </div>
+            <div class="couple-names">Hasan ❤️ Zainab</div>
+        </div>
+
+        <!-- Interactive Cake Section -->
+        <div class="cake-container">
+            <p id="statusText" class="status-instruction">Step 1: Tap each of the 3 candles to blow them out! 🕯️</p>
+            
+            <div class="cake-box" id="cakeBox">
+                <div class="plate"></div>
+                <div class="cake-layer-bottom"></div>
+                <div class="cake-layer-top">
+                    <div class="icing"></div>
+                </div>
+
+                <!-- 3 Aligned Candles -->
+                <div class="candles-group">
+                    <div class="candle-wrapper" onclick="extinguishCandle(1)">
+                        <div class="flame" id="flame1"></div>
+                    </div>
+                    <div class="candle-wrapper" onclick="extinguishCandle(2)">
+                        <div class="flame" id="flame2"></div>
+                    </div>
+                    <div class="candle-wrapper" onclick="extinguishCandle(3)">
+                        <div class="flame" id="flame3"></div>
+                    </div>
+                </div>
+
+                <div class="cake-cut-line" id="cutLine"></div>
+                <div class="knife" id="knife">🔪</div>
+            </div>
+        </div>
+
+        <!-- 15 Photos Grid Gallery Section -->
+        <div id="memories-section">
+            <h3 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                Our Beautiful Memories ❤️
+            </h3>
+            <div class="photos-grid" id="photosGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Floating Background Hearts Generator
+        function createHearts() {
+            const container = document.getElementById('bgHearts');
+            for(let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function openPinScreen() {
+            document.getElementById('heart-screen').style.display = 'none';
+            document.getElementById('pin-screen').style.display = 'block';
+            document.getElementById('pinInput').focus();
+        }
+
+        function verifyPin() {
+            const enteredPin = document.getElementById('pinInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (enteredPin === '3129') {
+                document.getElementById('pin-screen').style.display = 'none';
+                document.getElementById('main-celebration').style.display = 'block';
+                startWishAnimation();
+                renderPhotos();
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('pinInput').value = '';
+            }
+        }
+
+        // Animated Sequential Wishes Display (3 seconds interval)
+        function startWishAnimation() {
+            const chunks = document.querySelectorAll('.wish-chunk');
+            let current = 0;
+            
+            setInterval(() => {
+                chunks[current].classList.remove('active');
+                current = (current + 1) % chunks.length;
+                chunks[current].classList.add('active');
+            }, 3000);
+        }
+
+        // Interactive Candle Blowing Logic
+        let blownCandles = 0;
+        function extinguishCandle(index) {
+            const flame = document.getElementById(`flame${index}`);
+            if (!flame.classList.contains('off')) {
+                flame.classList.add('off');
+                blownCandles++;
+                
+                if (blownCandles < 3) {
+                    document.getElementById('statusText').innerText = `Great! ${3 - blownCandles} more candle(s) to blow! 🕯️`;
+                } else {
+                    document.getElementById('statusText').innerText = 'Step 2: Swipe across the cake with your finger/mouse to cut! 🍰';
+                    enableSwipeToCut();
+                }
+            }
+        }
+
+        // Swipe Gesture for Cake Cutting
+        let isCakeCut = false;
+        function enableSwipeToCut() {
+            const knife = document.getElementById('knife');
+            const cakeBox = document.getElementById('cakeBox');
+            const cutLine = document.getElementById('cutLine');
+            knife.classList.add('active');
+
+            let startX = 0, startY = 0;
+            let isDragging = false;
+
+            const startAction = (e) => {
+                if (isCakeCut) return;
+                isDragging = true;
+                const clientX = e.
