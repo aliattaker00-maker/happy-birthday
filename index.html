@@ -49,7 +49,7 @@
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
-        /* Screen 1: Heart Entry Screen (No PIN here now) */
+        /* Screen 1: Heart Entry Screen */
         #heart-screen {
             display: flex;
             flex-direction: column;
@@ -112,32 +112,42 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             margin-bottom: 25px;
             border: 2px solid #ff758c;
-            min-height: 180px;
+            min-height: 200px;
+            text-align: left;
         }
 
-        .wish-chunk {
-            font-size: 1.1rem;
-            line-height: 1.7;
+        /* Typing Effect Wish Styling */
+        #typingWish {
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: #2d3436;
             font-weight: 500;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.6s ease;
-            display: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
-        .wish-chunk.active {
-            opacity: 1;
-            transform: translateY(0);
-            display: block;
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.1rem;
+            background-color: #ff3366;
+            margin-left: 3px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .couple-names {
             font-size: 1.8rem;
             color: #ff3366;
             font-weight: 700;
-            margin-top: 15px;
+            margin-top: 20px;
             font-family: 'Dancing Script', cursive;
+            text-align: center;
         }
 
         /* Realistic 3D Cake Section */
@@ -289,7 +299,7 @@
             z-index: 15;
         }
 
-        /* Memories PIN Popup Modal (Appears only before memories) */
+        /* Memories PIN Popup Modal */
         #memories-pin-modal {
             display: none;
             position: fixed;
@@ -339,7 +349,7 @@
             box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
         }
 
-        /* Horizontal Scrollable Gallery for Full Larger Photos */
+        /* Horizontal Scrollable Gallery */
         #memories-section {
             display: none;
             animation: fadeIn 1s ease forwards;
@@ -425,7 +435,7 @@
     <!-- Floating Background Hearts -->
     <div class="bg-hearts" id="bgHearts"></div>
 
-    <!-- Screen 1: Heart Entry Screen (Direct Access - No PIN here) -->
+    <!-- Screen 1: Heart Entry Screen -->
     <div id="heart-screen">
         <h2 style="color: #ffffff; margin-bottom: 15px; font-family: 'Dancing Script', cursive; font-size: 3rem;">Welcome Hasan & Nisa ❤️</h2>
         <div class="big-heart-btn" onclick="openCelebration()">
@@ -434,7 +444,7 @@
         <p class="instruction-text">Tap the Heart to Enter Surprise!</p>
     </div>
 
-    <!-- Memories PIN Verification Modal (Appears after Cake Cutting) -->
+    <!-- Memories PIN Verification Modal -->
     <div id="memories-pin-modal">
         <div class="modal-content">
             <i class="fas fa-lock" style="font-size: 2.2rem; color: #ff3366; margin-bottom: 10px;"></i>
@@ -453,15 +463,9 @@
         <h1 class="title-romantic">Happy Birthday Nisa! 🎉🎂</h1>
         <p style="color: #ffffff; margin-bottom: 15px; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">The Queen of Hasan's Heart ✨</p>
 
-        <!-- Wish Container with Sequential Animated Display -->
+        <!-- Wish Container with Fast Typewriter Effect -->
         <div class="love-card">
-            <div id="wishContainer">
-                <p class="wish-chunk active">🌸🎂 Happy Birthday, Nisa! ❤️✨<br>Today is a very special day because it’s the birthday of someone who holds a truly special place in my heart. 🥹💗</p>
-                <p class="wish-chunk">Nisa, my heartfelt prayer is that your life will always be filled with happiness... 🌷<br>That any tears in your eyes will only be tears of joy, and your beautiful smile never fades. 🫶🏻</p>
-                <p class="wish-chunk">May Allah remove every difficulty from your life and fill your destiny with endless happiness. Ameen. 🤲🏻❤️</p>
-                <p class="wish-chunk">Some people come into our lives who mean so much more to us than ordinary people. Nisa, you are one of those people. 🌹✨</p>
-                <p class="wish-chunk">Happy Birthday once again, Nisa! 🎂👑💖<br>Keep shining with that beautiful smile of yours, always. Stay blessed! ✨🌙</p>
-            </div>
+            <span id="typingWish"></span><span class="typing-cursor" id="cursor"></span>
             <div class="couple-names">Hasan ❤️ Nisa</div>
         </div>
 
@@ -525,20 +529,28 @@
         function openCelebration() {
             document.getElementById('heart-screen').style.display = 'none';
             document.getElementById('main-celebration').style.display = 'block';
-            startWishAnimation();
+            startTypingWish();
             renderPhotos();
         }
 
-        // Animated Sequential Wishes Display (3 seconds interval)
-        function startWishAnimation() {
-            const chunks = document.querySelectorAll('.wish-chunk');
-            let current = 0;
-            
-            setInterval(() => {
-                chunks[current].classList.remove('active');
-                current = (current + 1) % chunks.length;
-                chunks[current].classList.add('active');
-            }, 3000);
+        // Fast Typewriter Effect for Full Birthday Wish
+        const fullWishText = `🌸🎂 Happy Birthday, Nisa! ❤️✨\n\nToday is a very special day because it’s the birthday of someone who holds a truly special place in my heart. 🥹💗\n\nNisa, my heartfelt prayer is that your life will always be filled with happiness, that any tears in your eyes will only be tears of joy, that your beautiful smile never fades, and that every dream you’ve ever held in your heart comes true. 🫶🏻🌷\n\nMay you always stay happy, successful, and blessed with everything you truly deserve. May Allah remove every difficulty from your life, protect you from all harm, and fill your destiny with endless happiness. Ameen. 🤲🏻❤️\n\nAnd can I tell you something? 🥹✨ Some people come into our lives who are different from everyone else. Sometimes, we can’t fully express our feelings to them, but deep down, they mean so much more to us than ordinary people. Nisa, you are one of those people. ❤️🌹\n\nYour happiness matters to me, and my sincere prayer is that you always have people around you who appreciate you, respect you, and become a reason behind your beautiful smile. ✨🌙\n\nHappy Birthday once again, Nisa! 🎂👑💖`;
+
+        function startTypingWish() {
+            const target = document.getElementById('typingWish');
+            let index = 0;
+            const speed = 25; // Fast typing speed in milliseconds per character
+
+            function typeChar() {
+                if (index < fullWishText.length) {
+                    target.textContent += fullWishText.charAt(index);
+                    index++;
+                    setTimeout(typeChar, speed);
+                } else {
+                    document.getElementById('cursor').style.display = 'none';
+                }
+            }
+            typeChar();
         }
 
         // Interactive Candle Blowing Logic
