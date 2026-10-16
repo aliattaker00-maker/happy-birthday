@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Zainab ❤️</title>
+    <title>Happy Birthday Nisa ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -49,7 +49,7 @@
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
-        /* Screen 1: Heart Entry Screen */
+        /* Screen 1: Heart Entry Screen (No PIN here now) */
         #heart-screen {
             display: flex;
             flex-direction: column;
@@ -86,50 +86,11 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Screen 2: PIN Lock Screen */
-        #pin-screen {
-            display: none;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            padding: 35px 25px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(255, 51, 102, 0.3);
-            text-align: center;
-            max-width: 360px;
-            width: 90%;
-            z-index: 1000;
-            border: 2px solid #ff4d79;
-        }
-
-        .pin-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 1.5rem;
-            text-align: center;
-            letter-spacing: 10px;
-            border: 2px solid #ff4d79;
-            border-radius: 12px;
-            margin: 20px 0;
-            outline: none;
-        }
-
-        .btn-unlock {
-            background: linear-gradient(135deg, #ff3366, #ff6b81);
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            font-size: 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
-        }
-
-        /* Screen 3: Main Celebration Page */
+        /* Screen 2: Main Celebration Page */
         #main-celebration {
             display: none;
             width: 100%;
-            max-width: 750px;
+            max-width: 850px;
             padding: 25px 15px;
             text-align: center;
             position: relative;
@@ -179,7 +140,7 @@
             font-family: 'Dancing Script', cursive;
         }
 
-        /* Interactive Cake Section */
+        /* Realistic 3D Cake Section */
         .cake-container {
             background: rgba(255, 255, 255, 0.95);
             padding: 25px 15px;
@@ -203,8 +164,8 @@
 
         .cake-box {
             position: relative;
-            width: 220px;
-            height: 160px;
+            width: 240px;
+            height: 170px;
             margin: 20px 0;
             touch-action: none;
         }
@@ -212,52 +173,54 @@
         .plate {
             position: absolute;
             bottom: 0;
-            left: -10px;
-            width: 240px;
-            height: 16px;
-            background: #e0e0e0;
+            left: -15px;
+            width: 270px;
+            height: 18px;
+            background: linear-gradient(to right, #e0e0e0, #ffffff, #d6d6d6);
             border-radius: 50%;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.25);
         }
 
+        /* Realistic Multi-Layer Cake */
         .cake-layer-bottom {
             position: absolute;
-            bottom: 16px;
+            bottom: 18px;
             left: 15px;
-            width: 190px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff4d79, #ff758c);
-            border-radius: 12px 12px 15px 15px;
-            box-shadow: inset 0 -5px 0 rgba(0,0,0,0.1);
+            width: 210px;
+            height: 65px;
+            background: linear-gradient(180deg, #d81b60 0%, #ad1457 100%);
+            border-radius: 14px 14px 18px 18px;
+            box-shadow: inset 0 6px 12px rgba(255,255,255,0.4), 0 5px 10px rgba(0,0,0,0.2);
         }
 
         .cake-layer-top {
             position: absolute;
-            bottom: 76px;
-            left: 35px;
-            width: 150px;
-            height: 45px;
-            background: linear-gradient(135deg, #ff8fa3, #ffb3c1);
-            border-radius: 10px 10px 12px 12px;
-            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.08);
+            bottom: 83px;
+            left: 40px;
+            width: 160px;
+            height: 50px;
+            background: linear-gradient(180deg, #f48fb1 0%, #ec407a 100%);
+            border-radius: 12px 12px 14px 14px;
+            box-shadow: inset 0 5px 10px rgba(255,255,255,0.5), 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .icing {
             position: absolute;
-            top: 0;
+            top: -2px;
             left: 0;
             width: 100%;
-            height: 14px;
+            height: 16px;
             background: #ffffff;
-            border-radius: 10px 10px 6px 6px;
+            border-radius: 12px 12px 8px 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
         /* Candles Alignment */
         .candles-group {
             position: absolute;
-            top: 9px;
-            left: 35px;
-            width: 150px;
+            top: 18px;
+            left: 40px;
+            width: 160px;
             height: 40px;
             display: flex;
             justify-content: space-around;
@@ -272,6 +235,7 @@
             background: repeating-linear-gradient(45deg, #ff3366, #ff3366 4px, #fff 4px, #fff 8px);
             border-radius: 3px;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .flame {
@@ -316,16 +280,16 @@
         .cake-cut-line {
             position: absolute;
             top: 20px;
-            left: 110px;
+            left: 120px;
             width: 4px;
             height: 0;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
             transition: height 0.4s ease;
             z-index: 15;
         }
 
-        /* Memories PIN Popup Modal */
+        /* Memories PIN Popup Modal (Appears only before memories) */
         #memories-pin-modal {
             display: none;
             position: fixed;
@@ -333,8 +297,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -351,10 +315,36 @@
             border: 2px solid #ff3366;
         }
 
-        /* 15 Photos Grid Gallery */
+        .pin-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 10px;
+            border: 2px solid #ff4d79;
+            border-radius: 12px;
+            margin: 20px 0;
+            outline: none;
+        }
+
+        .btn-unlock {
+            background: linear-gradient(135deg, #ff3366, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Horizontal Scrollable Gallery for Full Larger Photos */
         #memories-section {
             display: none;
             animation: fadeIn 1s ease forwards;
+            width: 100%;
+            margin-top: 10px;
         }
 
         @keyframes fadeIn {
@@ -362,50 +352,68 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .photos-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-            margin-top: 20px;
+        .scroll-hint {
+            color: #ffffff;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        @media(max-width: 768px) {
-            .photos-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .photos-scroll-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 15px 10px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
         }
 
-        @media(max-width: 480px) {
-            .photos-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .photos-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .photos-scroll-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .photos-scroll-container::-webkit-scrollbar-thumb {
+            background: #ff3366;
+            border-radius: 10px;
         }
 
         .photo-card {
+            flex: 0 0 auto;
+            width: 280px;
             background: white;
-            padding: 6px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            border: 2px solid #ff758c;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border: 3px solid #ff758c;
             text-align: center;
+            scroll-snap-align: start;
             transition: transform 0.3s ease;
         }
 
         .photo-card:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: scale(1.02);
         }
 
         .photo-card img {
             width: 100%;
-            height: 110px;
+            height: 340px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .photo-card p {
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             color: #ff3366;
-            margin-top: 6px;
+            margin-top: 10px;
             font-weight: 600;
         }
 
@@ -417,25 +425,13 @@
     <!-- Floating Background Hearts -->
     <div class="bg-hearts" id="bgHearts"></div>
 
-    <!-- Screen 1: Heart Entry Screen -->
+    <!-- Screen 1: Heart Entry Screen (Direct Access - No PIN here) -->
     <div id="heart-screen">
-        <h2 style="color: #ffffff; margin-bottom: 15px; font-family: 'Dancing Script', cursive; font-size: 3rem;">Welcome Hasan & Zainab ❤️</h2>
-        <div class="big-heart-btn" onclick="openPinScreen()">
+        <h2 style="color: #ffffff; margin-bottom: 15px; font-family: 'Dancing Script', cursive; font-size: 3rem;">Welcome Hasan & Nisa ❤️</h2>
+        <div class="big-heart-btn" onclick="openCelebration()">
             <i class="fas fa-heart"></i>
         </div>
         <p class="instruction-text">Tap the Heart to Enter Surprise!</p>
-    </div>
-
-    <!-- Screen 2: PIN Screen -->
-    <div id="pin-screen">
-        <i class="fas fa-heart" style="font-size: 2.5rem; color: #ff3366; margin-bottom: 10px;"></i>
-        <h3 style="color: #2d3436;">Enter Secret PIN</h3>
-        <p style="color: #636e72; font-size: 0.85rem; margin-top: 5px;">Passcode is 3129</p>
-        
-        <input type="password" id="pinInput" class="pin-input" maxlength="4" placeholder="••••">
-        <p id="errorMsg" class="error-msg">Incorrect PIN! Try '3129' ❤️</p>
-        
-        <button class="btn-unlock" onclick="verifyPin()">Unlock Celebration</button>
     </div>
 
     <!-- Memories PIN Verification Modal (Appears after Cake Cutting) -->
@@ -452,9 +448,9 @@
         </div>
     </div>
 
-    <!-- Screen 3: Main Celebration Page -->
+    <!-- Screen 2: Main Celebration Page -->
     <div id="main-celebration">
-        <h1 class="title-romantic">Happy Birthday Zainab! 🎉🎂</h1>
+        <h1 class="title-romantic">Happy Birthday Nisa! 🎉🎂</h1>
         <p style="color: #ffffff; margin-bottom: 15px; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">The Queen of Hasan's Heart ✨</p>
 
         <!-- Wish Container with Sequential Animated Display -->
@@ -466,10 +462,10 @@
                 <p class="wish-chunk">Some people come into our lives who mean so much more to us than ordinary people. Nisa, you are one of those people. 🌹✨</p>
                 <p class="wish-chunk">Happy Birthday once again, Nisa! 🎂👑💖<br>Keep shining with that beautiful smile of yours, always. Stay blessed! ✨🌙</p>
             </div>
-            <div class="couple-names">Hasan ❤️ Zainab</div>
+            <div class="couple-names">Hasan ❤️ Nisa</div>
         </div>
 
-        <!-- Interactive Cake Section -->
+        <!-- Interactive Realistic Cake Section -->
         <div class="cake-container">
             <p id="statusText" class="status-instruction">Step 1: Tap each of the 3 candles to blow them out! 🕯️</p>
             
@@ -498,12 +494,14 @@
             </div>
         </div>
 
-        <!-- 15 Photos Grid Gallery Section -->
+        <!-- 15 Photos Horizontal Scroll Gallery Section -->
         <div id="memories-section">
-            <h3 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+            <h3 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
                 Our Beautiful Memories ❤️
             </h3>
-            <div class="photos-grid" id="photosGrid"></div>
+            <p class="scroll-hint"><i class="fas fa-arrow-right"></i> Swipe right to see all photos</p>
+            
+            <div class="photos-scroll-container" id="photosGrid"></div>
         </div>
     </div>
 
@@ -523,25 +521,12 @@
         }
         createHearts();
 
-        function openPinScreen() {
+        // Direct Entry on Heart Click
+        function openCelebration() {
             document.getElementById('heart-screen').style.display = 'none';
-            document.getElementById('pin-screen').style.display = 'block';
-            document.getElementById('pinInput').focus();
-        }
-
-        function verifyPin() {
-            const enteredPin = document.getElementById('pinInput').value;
-            const errorMsg = document.getElementById('errorMsg');
-
-            if (enteredPin === '3129') {
-                document.getElementById('pin-screen').style.display = 'none';
-                document.getElementById('main-celebration').style.display = 'block';
-                startWishAnimation();
-                renderPhotos();
-            } else {
-                errorMsg.style.display = 'block';
-                document.getElementById('pinInput').value = '';
-            }
+            document.getElementById('main-celebration').style.display = 'block';
+            startWishAnimation();
+            renderPhotos();
         }
 
         // Animated Sequential Wishes Display (3 seconds interval)
@@ -607,7 +592,7 @@
                 if (Math.abs(diffY) > 40 || Math.abs(diffX) > 60) {
                     isCakeCut = true;
                     isDragging = false;
-                    cutLine.style.height = '120px';
+                    cutLine.style.height = '130px';
                     knife.style.transform = `translate(-65px, 60px) rotate(-45deg)`;
                     
                     document.getElementById('statusText').innerText = '🎉 Yay! Cake cut successfully! Enter PIN to view memories ❤️';
@@ -636,7 +621,7 @@
             window.addEventListener('touchend', endAction);
         }
 
-        // Verify PIN before opening Memories Section
+        // Verify PIN (3129) before opening Memories Section
         function verifyMemoriesPin() {
             const pin = document.getElementById('memoriesPinInput').value;
             const error = document.getElementById('memoriesErrorMsg');
@@ -652,7 +637,7 @@
             }
         }
 
-        // Render 15 Photos Grid Gallery with Exact Filenames
+        // Render 15 Photos Horizontal Scroll Gallery
         function renderPhotos() {
             const imageFilenames = [
                 "IMG-20261016-WA0050.jpg",
@@ -673,7 +658,7 @@
             ];
 
             const captions = [
-                "Zainab ❤️", "Hasan & Zainab", "My Universe ✨", "Forever Yours", 
+                "Nisa ❤️", "Hasan & Nisa", "My Universe ✨", "Forever Yours", 
                 "Precious Smile 😊", "Sweet Moments", "True Love 💖", "Always Together",
                 "My Happiness 🌸", "My Whole Heart", "Soulmate 💕", "Beautiful Memory",
                 "Endless Love", "Queen of Heart 👑", "Forever & Ever"
@@ -686,7 +671,7 @@
                 const card = document.createElement('div');
                 card.className = 'photo-card';
                 card.innerHTML = `
-                    <img src="${imageFilenames[i]}" alt="Memory ${i+1}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300/ff758c/ffffff?text=Photo+${i+50}';">
+                    <img src="${imageFilenames[i]}" alt="Memory ${i+1}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x400/ff758c/ffffff?text=Photo+${i+50}';">
                     <p>${captions[i]}</p>
                 `;
                 grid.appendChild(card);
