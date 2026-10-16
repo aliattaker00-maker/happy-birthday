@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* Floating Hearts Background Effect */
+        /* Floating Background Hearts Effect */
         .bg-hearts {
             position: fixed;
             top: 0;
@@ -587,4 +587,111 @@
             const startAction = (e) => {
                 if (isCakeCut) return;
                 isDragging = true;
-                const clientX = e.
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                startX = clientX;
+                startY = clientY;
+            };
+
+            const moveAction = (e) => {
+                if (!isDragging || isCakeCut) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const diffX = clientX - startX;
+                const diffY = clientY - startY;
+
+                knife.style.transform = `translate(${diffX}px, ${diffY}px) rotate(-30deg)`;
+
+                // Trigger cut if swiped across distance threshold
+                if (Math.abs(diffY) > 40 || Math.abs(diffX) > 60) {
+                    isCakeCut = true;
+                    isDragging = false;
+                    cutLine.style.height = '120px';
+                    knife.style.transform = `translate(-65px, 60px) rotate(-45deg)`;
+                    
+                    document.getElementById('statusText').innerText = '🎉 Yay! Cake cut successfully! Enter PIN to view memories ❤️';
+                    
+                    // Show Memories PIN Modal after cake cutting
+                    setTimeout(() => {
+                        document.getElementById('memories-pin-modal').style.display = 'flex';
+                        document.getElementById('memoriesPinInput').focus();
+                    }, 800);
+                }
+            };
+
+            const endAction = () => {
+                if (!isCakeCut) {
+                    isDragging = false;
+                    knife.style.transform = 'translate(0, 0)';
+                }
+            };
+
+            cakeBox.addEventListener('mousedown', startAction);
+            window.addEventListener('mousemove', moveAction);
+            window.addEventListener('mouseup', endAction);
+
+            cakeBox.addEventListener('touchstart', startAction);
+            window.addEventListener('touchmove', moveAction);
+            window.addEventListener('touchend', endAction);
+        }
+
+        // Verify PIN before opening Memories Section
+        function verifyMemoriesPin() {
+            const pin = document.getElementById('memoriesPinInput').value;
+            const error = document.getElementById('memoriesErrorMsg');
+
+            if (pin === '3129') {
+                document.getElementById('memories-pin-modal').style.display = 'none';
+                const memoriesSec = document.getElementById('memories-section');
+                memoriesSec.style.display = 'block';
+                memoriesSec.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                error.style.display = 'block';
+                document.getElementById('memoriesPinInput').value = '';
+            }
+        }
+
+        // Render 15 Photos Grid Gallery with Exact Filenames
+        function renderPhotos() {
+            const imageFilenames = [
+                "IMG-20261016-WA0050.jpg",
+                "IMG-20261016-WA0051.jpg",
+                "IMG-20261016-WA0052.jpg",
+                "IMG-20261016-WA0053.jpg",
+                "IMG-20261016-WA0054.jpg",
+                "IMG-20261016-WA0055.jpg",
+                "IMG-20261016-WA0056.jpg",
+                "IMG-20261016-WA0057.jpg",
+                "IMG-20261016-WA0058.jpg",
+                "IMG-20261016-WA0059.jpg",
+                "IMG-20261016-WA0060.jpg",
+                "IMG-20261016-WA0061.jpg",
+                "IMG-20261016-WA0062.jpg",
+                "IMG-20261016-WA0063.jpg",
+                "IMG-20261016-WA0064.jpg"
+            ];
+
+            const captions = [
+                "Zainab ❤️", "Hasan & Zainab", "My Universe ✨", "Forever Yours", 
+                "Precious Smile 😊", "Sweet Moments", "True Love 💖", "Always Together",
+                "My Happiness 🌸", "My Whole Heart", "Soulmate 💕", "Beautiful Memory",
+                "Endless Love", "Queen of Heart 👑", "Forever & Ever"
+            ];
+            
+            const grid = document.getElementById('photosGrid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < imageFilenames.length; i++) {
+                const card = document.createElement('div');
+                card.className = 'photo-card';
+                card.innerHTML = `
+                    <img src="${imageFilenames[i]}" alt="Memory ${i+1}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300/ff758c/ffffff?text=Photo+${i+50}';">
+                    <p>${captions[i]}</p>
+                `;
+                grid.appendChild(card);
+            }
+        }
+    </script>
+</body>
+</html>
