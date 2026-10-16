@@ -172,7 +172,7 @@
             display: none;
         }
 
-        /* SCREEN 3: Cake & Candles Section */
+        /* SCREEN 3: Premium Realistic Cake Section */
         .cake-container {
             background: rgba(255, 255, 255, 0.95);
             padding: 25px 15px;
@@ -195,60 +195,72 @@
 
         .cake-box {
             position: relative;
-            width: 240px;
-            height: 170px;
-            margin: 20px 0;
+            width: 260px;
+            height: 190px;
+            margin: 25px 0;
             touch-action: none;
         }
 
         .plate {
             position: absolute;
             bottom: 0;
-            left: -15px;
-            width: 270px;
-            height: 18px;
-            background: linear-gradient(to right, #e0e0e0, #ffffff, #d6d6d6);
+            left: -20px;
+            width: 300px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #ffffff 0%, #e0e0e0 70%, #bcbcbc 100%);
             border-radius: 50%;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
         }
 
+        /* Premium Glossy Realistic Cake Design */
         .cake-layer-bottom {
             position: absolute;
-            bottom: 18px;
-            left: 15px;
-            width: 210px;
-            height: 65px;
-            background: linear-gradient(180deg, #d81b60 0%, #ad1457 100%);
-            border-radius: 14px 14px 18px 18px;
-            box-shadow: inset 0 6px 12px rgba(255,255,255,0.4), 0 5px 10px rgba(0,0,0,0.2);
+            bottom: 20px;
+            left: 20px;
+            width: 220px;
+            height: 70px;
+            background: linear-gradient(135deg, #880e4f 0%, #ad1457 50%, #c2185b 100%);
+            border-radius: 12px 12px 20px 20px;
+            box-shadow: inset 0 8px 15px rgba(255,255,255,0.25), 0 6px 12px rgba(0,0,0,0.3);
         }
 
         .cake-layer-top {
             position: absolute;
-            bottom: 83px;
-            left: 40px;
+            bottom: 90px;
+            left: 50px;
             width: 160px;
-            height: 50px;
-            background: linear-gradient(180deg, #f48fb1 0%, #ec407a 100%);
-            border-radius: 12px 12px 14px 14px;
-            box-shadow: inset 0 5px 10px rgba(255,255,255,0.5), 0 4px 8px rgba(0,0,0,0.15);
+            height: 55px;
+            background: linear-gradient(135deg, #ad1457 0%, #d81b60 50%, #e91e63 100%);
+            border-radius: 10px 10px 15px 15px;
+            box-shadow: inset 0 6px 12px rgba(255,255,255,0.3), 0 5px 10px rgba(0,0,0,0.2);
         }
 
-        .icing {
+        .icing-drip {
             position: absolute;
-            top: -2px;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 16px;
+            height: 18px;
             background: #ffffff;
-            border-radius: 12px 12px 8px 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border-radius: 10px 10px 8px 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Luxury Gold Ribbon Accent */
+        .cake-ribbon {
+            position: absolute;
+            bottom: 45px;
+            left: 20px;
+            width: 220px;
+            height: 8px;
+            background: linear-gradient(90deg, #ffd700, #fff, #ffd700);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .candles-group {
             position: absolute;
-            top: 18px;
-            left: 40px;
+            top: 22px;
+            left: 50px;
             width: 160px;
             height: 40px;
             display: flex;
@@ -259,8 +271,8 @@
 
         .candle-wrapper {
             position: relative;
-            width: 12px;
-            height: 32px;
+            width: 10px;
+            height: 35px;
             background: repeating-linear-gradient(45deg, #ff3366, #ff3366 4px, #fff 4px, #fff 8px);
             border-radius: 3px;
             cursor: pointer;
@@ -270,7 +282,7 @@
         .flame {
             position: absolute;
             top: -16px;
-            left: -2px;
+            left: -3px;
             width: 16px;
             height: 20px;
             background: radial-gradient(ellipse at bottom, #fffa65, #ff9f1a, #ff3838);
@@ -291,7 +303,7 @@
         .knife {
             position: absolute;
             top: -20px;
-            right: -60px;
+            right: -70px;
             font-size: 2.8rem;
             cursor: grab;
             transition: transform 0.2s ease-out;
@@ -307,11 +319,11 @@
 
         .cake-cut-line {
             position: absolute;
-            top: 20px;
-            left: 120px;
+            top: 22px;
+            left: 130px;
             width: 4px;
             height: 0;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 0 10px rgba(0,0,0,0.4);
             transition: height 0.4s ease;
             z-index: 15;
@@ -356,7 +368,7 @@
 
         .error-msg { color: #ff3366; font-size: 0.85rem; margin-top: 10px; display: none; }
 
-        /* SCREEN 5: Pure Memories Photo Gallery (No text below images) */
+        /* SCREEN 5: Pure Memories Photo Gallery */
         .photos-scroll-container {
             display: flex;
             gap: 20px;
@@ -441,8 +453,9 @@
             <div class="cake-box" id="cakeBox">
                 <div class="plate"></div>
                 <div class="cake-layer-bottom"></div>
+                <div class="cake-ribbon"></div>
                 <div class="cake-layer-top">
-                    <div class="icing"></div>
+                    <div class="icing-drip"></div>
                 </div>
 
                 <div class="candles-group">
@@ -481,7 +494,7 @@
         </div>
     </div>
 
-    <!-- SCREEN 5: Pure Memories Photos Screen (No Text below photos) -->
+    <!-- SCREEN 5: Pure Memories Photos Screen + Happy Birthday Song Audio -->
     <div id="screen-5" class="page-screen">
         <h2 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
             Our Memories ❤️
@@ -489,6 +502,11 @@
         <p style="color: #ffffff; font-size: 0.95rem; margin-bottom: 10px;"><i class="fas fa-arrow-right"></i> Swipe right for photos</p>
         
         <div class="photos-scroll-container" id="photosGrid"></div>
+
+        <!-- Happy Birthday Song Synthesizer / Audio Tone Generator -->
+        <audio id="bdaySong" loop>
+            <source src="https://actions.google.com/sounds/v1/ambiences/birthday_party.ogg" type="audio/ogg">
+        </audio>
     </div>
 
     <script>
@@ -507,7 +525,7 @@
         }
         createHearts();
 
-        // Screen Switcher Function (No Browser Redirection)
+        // Screen Switcher Function
         function goToScreen(screenNum) {
             document.querySelectorAll('.page-screen').forEach(screen => {
                 screen.style.display = 'none';
@@ -529,7 +547,7 @@
                 isTyped = true;
                 const target = document.getElementById('typingWish');
                 let index = 0;
-                const speed = 25; // Fast typing speed
+                const speed = 25;
 
                 function typeChar() {
                     if (index < fullWishText.length) {
@@ -595,8 +613,8 @@
                 if (Math.abs(diffY) > 40 || Math.abs(diffX) > 60) {
                     isCakeCut = true;
                     isDragging = false;
-                    cutLine.style.height = '130px';
-                    knife.style.transform = `translate(-65px, 60px) rotate(-45deg)`;
+                    cutLine.style.height = '140px';
+                    knife.style.transform = `translate(-65px, 65px) rotate(-45deg)`;
                     
                     document.getElementById('statusText').innerText = '🎉 Yay! Cake cut successfully!';
                     document.getElementById('toLockBtn').style.display = 'inline-block';
@@ -619,7 +637,7 @@
             window.addEventListener('touchend', endAction);
         }
 
-        // Verify PIN (3129) before opening Pure Memories Screen
+        // Verify PIN (3129) and Play Happy Birthday Song on Memories Screen
         function verifyMemoriesPin() {
             const pin = document.getElementById('memoriesPinInput').value;
             const error = document.getElementById('memoriesErrorMsg');
@@ -627,13 +645,17 @@
             if (pin === '3129') {
                 renderPurePhotos();
                 goToScreen(5);
+                
+                // Play Happy Birthday Party Audio
+                const song = document.getElementById('bdaySong');
+                song.play().catch(e => console.log("Audio autoplay restricted by browser"));
             } else {
                 error.style.display = 'block';
                 document.getElementById('memoriesPinInput').value = '';
             }
         }
 
-        // Render 15 Photos Gallery without any Text below
+        // Render 15 Photos Gallery without Text
         function renderPurePhotos() {
             const imageFilenames = [
                 "IMG-20261016-WA0050.jpg",
