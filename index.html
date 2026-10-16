@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* Floating Background Hearts Effect */
+        /* Floating Background Hearts */
         .bg-hearts {
             position: fixed;
             top: 0;
@@ -49,15 +49,29 @@
             100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
-        /* Screen 1: Heart Entry Screen */
-        #heart-screen {
+        /* Common Screen Layout */
+        .page-screen {
+            display: none;
+            width: 100%;
+            max-width: 700px;
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SCREEN 1: Heart Entry Screen */
+        #screen-1 {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
-            z-index: 1000;
         }
 
         .big-heart-btn {
@@ -86,23 +100,17 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Screen 2: Main Celebration Page */
-        #main-celebration {
-            display: none;
-            width: 100%;
-            max-width: 850px;
-            padding: 25px 15px;
-            text-align: center;
-            position: relative;
-            z-index: 100;
+        /* SCREEN 2: Letter & Wish Screen */
+        .envelope-btn {
+            font-size: 5rem;
+            color: #ff3366;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
 
-        .title-romantic {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            color: #ffffff;
-            margin-bottom: 5px;
-            text-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+        .envelope-btn:hover {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .love-card {
@@ -110,13 +118,13 @@
             padding: 25px 20px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin-bottom: 25px;
+            margin-top: 15px;
             border: 2px solid #ff758c;
-            min-height: 200px;
+            min-height: 220px;
             text-align: left;
+            display: none;
         }
 
-        /* Typing Effect Wish Styling */
         #typingWish {
             font-size: 1.05rem;
             line-height: 1.8;
@@ -150,13 +158,26 @@
             text-align: center;
         }
 
-        /* Realistic 3D Cake Section */
+        .next-btn {
+            background: linear-gradient(135deg, #ff3366, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* SCREEN 3: Cake & Candles Section */
         .cake-container {
             background: rgba(255, 255, 255, 0.95);
             padding: 25px 15px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-bottom: 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -191,7 +212,6 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.25);
         }
 
-        /* Realistic Multi-Layer Cake */
         .cake-layer-bottom {
             position: absolute;
             bottom: 18px;
@@ -225,7 +245,6 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
-        /* Candles Alignment */
         .candles-group {
             position: absolute;
             top: 18px;
@@ -269,7 +288,6 @@
             100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
         }
 
-        /* Swipe Knife Element */
         .knife {
             position: absolute;
             top: -20px;
@@ -299,30 +317,29 @@
             z-index: 15;
         }
 
-        /* Memories PIN Popup Modal */
-        #memories-pin-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(6px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+        /* SCREEN 4: Lock & PIN Screen */
+        .lock-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 350px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid #ff3366;
         }
 
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 340px;
-            width: 90%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 2px solid #ff3366;
+        .lock-icon-btn {
+            font-size: 3.5rem;
+            color: #ff3366;
+            cursor: pointer;
+            margin-bottom: 10px;
+            animation: pulseLock 1.5s infinite;
+        }
+
+        @keyframes pulseLock {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .pin-input {
@@ -337,47 +354,14 @@
             outline: none;
         }
 
-        .btn-unlock {
-            background: linear-gradient(135deg, #ff3366, #ff6b81);
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            font-size: 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
-        }
+        .error-msg { color: #ff3366; font-size: 0.85rem; margin-top: 10px; display: none; }
 
-        /* Horizontal Scrollable Gallery */
-        #memories-section {
-            display: none;
-            animation: fadeIn 1s ease forwards;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .scroll-hint {
-            color: #ffffff;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
+        /* SCREEN 5: Pure Memories Photo Gallery (No text below images) */
         .photos-scroll-container {
             display: flex;
             gap: 20px;
             overflow-x: auto;
-            padding: 15px 10px;
+            padding: 20px 10px;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
         }
@@ -396,38 +380,24 @@
             border-radius: 10px;
         }
 
-        .photo-card {
+        .photo-card-pure {
             flex: 0 0 auto;
-            width: 280px;
+            width: 290px;
             background: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             border: 3px solid #ff758c;
-            text-align: center;
             scroll-snap-align: start;
-            transition: transform 0.3s ease;
         }
 
-        .photo-card:hover {
-            transform: scale(1.02);
-        }
-
-        .photo-card img {
+        .photo-card-pure img {
             width: 100%;
-            height: 340px;
+            height: 380px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 14px;
+            display: block;
         }
-
-        .photo-card p {
-            font-size: 0.9rem;
-            color: #ff3366;
-            margin-top: 10px;
-            font-weight: 600;
-        }
-
-        .error-msg { color: #ff3366; font-size: 0.85rem; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
@@ -435,41 +405,36 @@
     <!-- Floating Background Hearts -->
     <div class="bg-hearts" id="bgHearts"></div>
 
-    <!-- Screen 1: Heart Entry Screen -->
-    <div id="heart-screen">
+    <!-- SCREEN 1: Heart Entry Screen -->
+    <div id="screen-1" class="page-screen" style="display: flex;">
         <h2 style="color: #ffffff; margin-bottom: 15px; font-family: 'Dancing Script', cursive; font-size: 3rem;">Welcome Hasan & Nisa ❤️</h2>
-        <div class="big-heart-btn" onclick="openCelebration()">
+        <div class="big-heart-btn" onclick="goToScreen(2)">
             <i class="fas fa-heart"></i>
         </div>
-        <p class="instruction-text">Tap the Heart to Enter Surprise!</p>
+        <p class="instruction-text">Tap the Heart to Open Envelope!</p>
     </div>
 
-    <!-- Memories PIN Verification Modal -->
-    <div id="memories-pin-modal">
-        <div class="modal-content">
-            <i class="fas fa-lock" style="font-size: 2.2rem; color: #ff3366; margin-bottom: 10px;"></i>
-            <h3 style="color: #2d3436;">Enter PIN for Memories</h3>
-            <p style="color: #636e72; font-size: 0.85rem; margin-top: 5px;">Enter passcode '3129' to unlock photos</p>
-            
-            <input type="password" id="memoriesPinInput" class="pin-input" maxlength="4" placeholder="••••">
-            <p id="memoriesErrorMsg" class="error-msg">Incorrect PIN! Try '3129' ❤️</p>
-            
-            <button class="btn-unlock" onclick="verifyMemoriesPin()">Unlock Memories</button>
+    <!-- SCREEN 2: Envelope & Typewriter Wish Screen -->
+    <div id="screen-2" class="page-screen">
+        <h2 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 10px;">A Special Letter For Nisa ✉️❤️</h2>
+        
+        <div class="envelope-btn" id="envBtn" onclick="openLetter()">
+            <i class="fas fa-envelope-open-text"></i>
+            <p style="font-size: 1rem; color: #fff; font-family: 'Poppins', sans-serif;">Tap to Open Letter</p>
         </div>
-    </div>
 
-    <!-- Screen 2: Main Celebration Page -->
-    <div id="main-celebration">
-        <h1 class="title-romantic">Happy Birthday Nisa! 🎉🎂</h1>
-        <p style="color: #ffffff; margin-bottom: 15px; font-weight: 600; text-shadow: 1px 1px 3px rgba(0,0,0,0.2);">The Queen of Hasan's Heart ✨</p>
-
-        <!-- Wish Container with Fast Typewriter Effect -->
-        <div class="love-card">
+        <div class="love-card" id="loveCard">
             <span id="typingWish"></span><span class="typing-cursor" id="cursor"></span>
             <div class="couple-names">Hasan ❤️ Nisa</div>
         </div>
 
-        <!-- Interactive Realistic Cake Section -->
+        <button class="next-btn" id="toCakeBtn" onclick="goToScreen(3)">Continue to Birthday Cake 🍰</button>
+    </div>
+
+    <!-- SCREEN 3: Birthday Cake & Candles Screen -->
+    <div id="screen-3" class="page-screen">
+        <h2 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 10px;">Birthday Cake Time 🎂</h2>
+        
         <div class="cake-container">
             <p id="statusText" class="status-instruction">Step 1: Tap each of the 3 candles to blow them out! 🕯️</p>
             
@@ -480,7 +445,6 @@
                     <div class="icing"></div>
                 </div>
 
-                <!-- 3 Aligned Candles -->
                 <div class="candles-group">
                     <div class="candle-wrapper" onclick="extinguishCandle(1)">
                         <div class="flame" id="flame1"></div>
@@ -498,15 +462,33 @@
             </div>
         </div>
 
-        <!-- 15 Photos Horizontal Scroll Gallery Section -->
-        <div id="memories-section">
-            <h3 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
-                Our Beautiful Memories ❤️
-            </h3>
-            <p class="scroll-hint"><i class="fas fa-arrow-right"></i> Swipe right to see all photos</p>
+        <button class="next-btn" id="toLockBtn" onclick="goToScreen(4)">Unlock Memories 🔒</button>
+    </div>
+
+    <!-- SCREEN 4: Lock Icon & PIN Entry Screen -->
+    <div id="screen-4" class="page-screen">
+        <div class="lock-card">
+            <div class="lock-icon-btn">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3 style="color: #2d3436;">Locked Memories</h3>
+            <p style="color: #636e72; font-size: 0.85rem; margin-top: 5px;">Enter Secret PIN to unlock photos</p>
             
-            <div class="photos-scroll-container" id="photosGrid"></div>
+            <input type="password" id="memoriesPinInput" class="pin-input" maxlength="4" placeholder="••••">
+            <p id="memoriesErrorMsg" class="error-msg">Incorrect PIN! Try '3129' ❤️</p>
+            
+            <button class="next-btn" style="display: inline-block; margin-top: 10px;" onclick="verifyMemoriesPin()">Unlock Memories</button>
         </div>
+    </div>
+
+    <!-- SCREEN 5: Pure Memories Photos Screen (No Text below photos) -->
+    <div id="screen-5" class="page-screen">
+        <h2 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+            Our Memories ❤️
+        </h2>
+        <p style="color: #ffffff; font-size: 0.95rem; margin-bottom: 10px;"><i class="fas fa-arrow-right"></i> Swipe right for photos</p>
+        
+        <div class="photos-scroll-container" id="photosGrid"></div>
     </div>
 
     <script>
@@ -525,35 +507,45 @@
         }
         createHearts();
 
-        // Direct Entry on Heart Click
-        function openCelebration() {
-            document.getElementById('heart-screen').style.display = 'none';
-            document.getElementById('main-celebration').style.display = 'block';
-            startTypingWish();
-            renderPhotos();
+        // Screen Switcher Function (No Browser Redirection)
+        function goToScreen(screenNum) {
+            document.querySelectorAll('.page-screen').forEach(screen => {
+                screen.style.display = 'none';
+            });
+            const targetScreen = document.getElementById(`screen-${screenNum}`);
+            targetScreen.style.display = 'block';
+            if (screenNum === 1) targetScreen.style.display = 'flex';
         }
 
-        // Fast Typewriter Effect for Full Birthday Wish
+        // Letter Opening & Typewriter Wish Animation
         const fullWishText = `🌸🎂 Happy Birthday, Nisa! ❤️✨\n\nToday is a very special day because it’s the birthday of someone who holds a truly special place in my heart. 🥹💗\n\nNisa, my heartfelt prayer is that your life will always be filled with happiness, that any tears in your eyes will only be tears of joy, that your beautiful smile never fades, and that every dream you’ve ever held in your heart comes true. 🫶🏻🌷\n\nMay you always stay happy, successful, and blessed with everything you truly deserve. May Allah remove every difficulty from your life, protect you from all harm, and fill your destiny with endless happiness. Ameen. 🤲🏻❤️\n\nAnd can I tell you something? 🥹✨ Some people come into our lives who are different from everyone else. Sometimes, we can’t fully express our feelings to them, but deep down, they mean so much more to us than ordinary people. Nisa, you are one of those people. ❤️🌹\n\nYour happiness matters to me, and my sincere prayer is that you always have people around you who appreciate you, respect you, and become a reason behind your beautiful smile. ✨🌙\n\nHappy Birthday once again, Nisa! 🎂👑💖`;
 
-        function startTypingWish() {
-            const target = document.getElementById('typingWish');
-            let index = 0;
-            const speed = 25; // Fast typing speed in milliseconds per character
+        let isTyped = false;
+        function openLetter() {
+            document.getElementById('envBtn').style.display = 'none';
+            document.getElementById('loveCard').style.display = 'block';
+            
+            if (!isTyped) {
+                isTyped = true;
+                const target = document.getElementById('typingWish');
+                let index = 0;
+                const speed = 25; // Fast typing speed
 
-            function typeChar() {
-                if (index < fullWishText.length) {
-                    target.textContent += fullWishText.charAt(index);
-                    index++;
-                    setTimeout(typeChar, speed);
-                } else {
-                    document.getElementById('cursor').style.display = 'none';
+                function typeChar() {
+                    if (index < fullWishText.length) {
+                        target.textContent += fullWishText.charAt(index);
+                        index++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        document.getElementById('cursor').style.display = 'none';
+                        document.getElementById('toCakeBtn').style.display = 'inline-block';
+                    }
                 }
+                typeChar();
             }
-            typeChar();
         }
 
-        // Interactive Candle Blowing Logic
+        // Candle Blowing Logic
         let blownCandles = 0;
         function extinguishCandle(index) {
             const flame = document.getElementById(`flame${index}`);
@@ -600,20 +592,14 @@
 
                 knife.style.transform = `translate(${diffX}px, ${diffY}px) rotate(-30deg)`;
 
-                // Trigger cut if swiped across distance threshold
                 if (Math.abs(diffY) > 40 || Math.abs(diffX) > 60) {
                     isCakeCut = true;
                     isDragging = false;
                     cutLine.style.height = '130px';
                     knife.style.transform = `translate(-65px, 60px) rotate(-45deg)`;
                     
-                    document.getElementById('statusText').innerText = '🎉 Yay! Cake cut successfully! Enter PIN to view memories ❤️';
-                    
-                    // Show Memories PIN Modal after cake cutting
-                    setTimeout(() => {
-                        document.getElementById('memories-pin-modal').style.display = 'flex';
-                        document.getElementById('memoriesPinInput').focus();
-                    }, 800);
+                    document.getElementById('statusText').innerText = '🎉 Yay! Cake cut successfully!';
+                    document.getElementById('toLockBtn').style.display = 'inline-block';
                 }
             };
 
@@ -633,24 +619,22 @@
             window.addEventListener('touchend', endAction);
         }
 
-        // Verify PIN (3129) before opening Memories Section
+        // Verify PIN (3129) before opening Pure Memories Screen
         function verifyMemoriesPin() {
             const pin = document.getElementById('memoriesPinInput').value;
             const error = document.getElementById('memoriesErrorMsg');
 
             if (pin === '3129') {
-                document.getElementById('memories-pin-modal').style.display = 'none';
-                const memoriesSec = document.getElementById('memories-section');
-                memoriesSec.style.display = 'block';
-                memoriesSec.scrollIntoView({ behavior: 'smooth' });
+                renderPurePhotos();
+                goToScreen(5);
             } else {
                 error.style.display = 'block';
                 document.getElementById('memoriesPinInput').value = '';
             }
         }
 
-        // Render 15 Photos Horizontal Scroll Gallery
-        function renderPhotos() {
+        // Render 15 Photos Gallery without any Text below
+        function renderPurePhotos() {
             const imageFilenames = [
                 "IMG-20261016-WA0050.jpg",
                 "IMG-20261016-WA0051.jpg",
@@ -669,22 +653,14 @@
                 "IMG-20261016-WA0064.jpg"
             ];
 
-            const captions = [
-                "Nisa ❤️", "Hasan & Nisa", "My Universe ✨", "Forever Yours", 
-                "Precious Smile 😊", "Sweet Moments", "True Love 💖", "Always Together",
-                "My Happiness 🌸", "My Whole Heart", "Soulmate 💕", "Beautiful Memory",
-                "Endless Love", "Queen of Heart 👑", "Forever & Ever"
-            ];
-            
             const grid = document.getElementById('photosGrid');
             grid.innerHTML = '';
 
             for (let i = 0; i < imageFilenames.length; i++) {
                 const card = document.createElement('div');
-                card.className = 'photo-card';
+                card.className = 'photo-card-pure';
                 card.innerHTML = `
                     <img src="${imageFilenames[i]}" alt="Memory ${i+1}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x400/ff758c/ffffff?text=Photo+${i+50}';">
-                    <p>${captions[i]}</p>
                 `;
                 grid.appendChild(card);
             }
