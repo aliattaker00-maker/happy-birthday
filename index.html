@@ -209,7 +209,6 @@
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
         }
 
-        /* Single Candle Positioned on Cake */
         .single-candle-wrapper {
             position: absolute;
             top: 15px;
@@ -353,6 +352,19 @@
             border-radius: 14px;
             display: block;
         }
+
+        .music-toggle-btn {
+            background: #ffffff;
+            color: #ff3366;
+            border: 2px solid #ff3366;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -396,7 +408,6 @@
             <div class="cake-box" id="cakeBox">
                 <div class="cake-emoji">🎂</div>
                 
-                <!-- Single Candle -->
                 <div class="single-candle-wrapper" onclick="extinguishCandle()">
                     <div class="flame" id="cakeFlame"></div>
                 </div>
@@ -425,19 +436,15 @@
         </div>
     </div>
 
-    <!-- SCREEN 5: Pure Memories Photos Screen + Happy Birthday Song Audio -->
+    <!-- SCREEN 5: Pure Memories Photos Screen -->
     <div id="screen-5" class="page-screen">
         <h2 style="color: #ffffff; font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
             Our Memories ❤️
         </h2>
+        <button class="music-toggle-btn" onclick="playBirthdaySong()"><i class="fas fa-music"></i> Play Music 🎵</button>
         <p style="color: #ffffff; font-size: 0.95rem; margin-bottom: 10px;"><i class="fas fa-arrow-right"></i> Swipe right for photos</p>
         
         <div class="photos-scroll-container" id="photosGrid"></div>
-
-        <!-- Happy Birthday Song Audio -->
-        <audio id="bdaySong" loop>
-            <source src="https://actions.google.com/sounds/v1/ambiences/birthday_party.ogg" type="audio/ogg">
-        </audio>
     </div>
 
     <script>
@@ -563,7 +570,42 @@
             window.addEventListener('touchend', endAction);
         }
 
-        // Verify PIN (3129) and Play Happy Birthday Song on Memories Screen
+        // Web Audio API Synthesizer (Built-in Happy Birthday Melody)
+        function playBirthdaySong() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioContext();
+                
+                const notes = [
+                    {f: 264, d: 0.3}, {f: 264, d: 0.3}, {f: 297, d: 0.6}, {f: 264, d: 0.6}, {f: 352, d: 0.6}, {f: 330, d: 1.2},
+                    {f: 264, d: 0.3}, {f: 264, d: 0.3}, {f: 297, d: 0.6}, {f: 264, d: 0.6}, {f: 396, d: 0.6}, {f: 352, d: 1.2},
+                    {f: 264, d: 0.3}, {f: 264, d: 0.3}, {f: 528, d: 0.6}, {f: 440, d: 0.6}, {f: 352, d: 0.6}, {f: 330, d: 0.6}, {f: 297, d: 1.2}
+                ];
+
+                let time = ctx.currentTime;
+                notes.forEach(note => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.value = note.f;
+                    
+                    gain.gain.setValueAtTime(0.2, time);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, time + note.d);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+
+                    osc.start(time);
+                    osc.stop(time + note.d);
+
+                    time += note.d + 0.05;
+                });
+            } catch (e) {
+                console.log("Audio play error:", e);
+            }
+        }
+
+        // Verify PIN (3129) before opening Pure Memories Screen
         function verifyMemoriesPin() {
             const pin = document.getElementById('memoriesPinInput').value;
             const error = document.getElementById('memoriesErrorMsg');
@@ -571,10 +613,7 @@
             if (pin === '3129') {
                 renderPurePhotos();
                 goToScreen(5);
-                
-                // Play Birthday Audio
-                const song = document.getElementById('bdaySong');
-                song.play().catch(e => console.log("Audio autoplay restricted by browser"));
+                playBirthdaySong();
             } else {
                 error.style.display = 'block';
                 document.getElementById('memoriesPinInput').value = '';
